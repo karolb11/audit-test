@@ -22,8 +22,8 @@ public class Category extends Audit {
     public Category() {
     }
 
-    public Category(CategoryRequest payload) {
-        name = payload.getName();
-        description = payload.getDescription();
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 }

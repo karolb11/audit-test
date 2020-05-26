@@ -13,13 +13,19 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public boolean create(CategoryRequest payload) {
+    public boolean create(Category payload) {
         try {
-            Category product = new Category(payload);
+            Category product = new Category(payload.getName(), payload.getDescription());
             categoryRepository.save(product);
             return true;
         }catch (Exception e) {
             return false;
         }
     }
+
+    public Category read(Long id) throws Exception {
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new Exception("not found"));
+    }
+
 }
