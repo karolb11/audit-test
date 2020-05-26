@@ -15,14 +15,9 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public boolean create(Category payload) {
-        try {
-            Category product = new Category(payload.getName(), payload.getDescription());
-            categoryRepository.save(product);
-            return true;
-        }catch (Exception e) {
-            return false;
-        }
+    public void create(Category payload) {
+        Category product = new Category(payload.getName(), payload.getDescription());
+        categoryRepository.save(product);
     }
 
     public Optional<Category> readById(Long id) {

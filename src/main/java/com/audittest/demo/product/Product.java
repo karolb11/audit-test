@@ -1,6 +1,8 @@
 package com.audittest.demo.product;
 
 import com.audittest.demo.audit.Audit;
+import com.audittest.demo.category.Category;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NonNull;
@@ -11,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Data
-class Product  extends Audit {
+public class Product  extends Audit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
@@ -23,12 +25,17 @@ class Product  extends Audit {
     @Column(nullable = false)
     private Float price;
 
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Category category;
+
     public Product() {
     }
 
-    public Product(String name, Float price) {
+    public Product(String name, Float price, Category category) {
         this.name = name;
         this.price = price;
+        this.category = category;
     }
 }
 
