@@ -25,7 +25,7 @@ public class CategoryService {
         }
     }
 
-    public Optional<Category> read(Long id) {
+    public Optional<Category> readById(Long id) {
         return categoryRepository.findById(id);
     }
 

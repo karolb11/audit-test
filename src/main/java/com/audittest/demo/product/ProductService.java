@@ -14,9 +14,9 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public boolean create(ProductRequest payload) {
+    public boolean create(Product payload) {
         try {
-            Product product = new Product(payload);
+            Product product = new Product(payload.getName(), payload.getPrice());
             productRepository.save(product);
             return true;
         }catch (Exception e) {
@@ -24,15 +24,6 @@ public class ProductService {
         }
     }
 
-    @Transactional
-    public boolean update(ProductRequest payload) {
-        try {
-            Product product = productRepository.findByName(payload.getName()).get();
-            product.update(payload);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+
 
 }

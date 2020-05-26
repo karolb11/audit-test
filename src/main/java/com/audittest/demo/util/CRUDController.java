@@ -10,17 +10,18 @@ import java.util.function.Predicate;
 
 public class CRUDController<T> {
 
-    public ResponseEntity<?> create(Predicate<T> createFunction, T payload) {
+    public ResponseEntity<?> handleCreateRequest(Predicate<T> createFunction, T payload) {
         if(createFunction.test(payload)) {
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<?> handleReadRequest(Function<Long, Optional<T>> readFunction, Long id) {
+    public ResponseEntity<?> handleReadByIdRequest(Function<Long, Optional<T>> readFunction, Long id) {
         try {
-            T obj = readFunction.apply(id).orElseThrow(() -> new Exception("not found"));
-            return new ResponseEntity<>(obj, HttpStatus.FOUND);
+            T payload = readFunction.apply(id)
+                    .orElseThrow(() -> new Exception("not found"));
+            return new ResponseEntity<>(payload, HttpStatus.FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

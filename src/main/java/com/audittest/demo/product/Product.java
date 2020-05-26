@@ -21,19 +21,14 @@ class Product  extends Audit {
     private String name;
 
     @Column(nullable = false)
-    private String price;
+    private Float price;
 
     public Product() {
     }
 
-    public Product(ProductRequest payload) {
-        name = payload.getName();
-        price = payload.getPrice();
-    }
-
-    public void update(ProductRequest payload) {
-        name = payload.getName();
-        price = payload.getPrice();
+    public Product(String name, Float price) {
+        this.name = name;
+        this.price = price;
     }
 }
 

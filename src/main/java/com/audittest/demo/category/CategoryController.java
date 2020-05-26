@@ -17,11 +17,11 @@ public class CategoryController extends CRUDController<Category> {
 
     @PostMapping("/newCategory")
     public ResponseEntity<?> saveNewCategory(@RequestBody Category category) {
-        return create(categoryService::create, category);
+        return handleCreateRequest(categoryService::create, category);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findCategoryById(@PathVariable("id") Long id) {
-        return handleReadRequest(categoryService::read, id);
+        return handleReadByIdRequest(categoryService::readById, id);
     }
 }
