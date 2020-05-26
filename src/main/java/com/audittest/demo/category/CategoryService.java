@@ -3,6 +3,8 @@ package com.audittest.demo.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CategoryService {
 
@@ -23,9 +25,8 @@ public class CategoryService {
         }
     }
 
-    public Category read(Long id) throws Exception {
-        return categoryRepository.findById(id)
-                .orElseThrow(() -> new Exception("not found"));
+    public Optional<Category> read(Long id) {
+        return categoryRepository.findById(id);
     }
 
 }
