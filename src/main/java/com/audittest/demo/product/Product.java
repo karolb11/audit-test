@@ -25,7 +25,6 @@ public class Product  extends Audit {
     @Column(nullable = false)
     private Float price;
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
