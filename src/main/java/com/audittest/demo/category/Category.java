@@ -21,8 +21,7 @@ public class Category extends Audit {
 
     @Column(nullable = false)
     private String description;
-
-    @JsonManagedReference
+    
     @OneToMany(mappedBy = "category")
     private Set<Product> products;
 
