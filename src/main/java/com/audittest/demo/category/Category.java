@@ -3,13 +3,17 @@ package com.audittest.demo.category;
 import com.audittest.demo.audit.Audit;
 import com.audittest.demo.product.Product;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category extends Audit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +29,4 @@ public class Category extends Audit {
     @OneToMany(mappedBy = "category")
     private Set<Product> products;
 
-    public Category() {
-    }
-
-    public Category(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
 }
