@@ -6,7 +6,4 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    Category findByName(String name);
-
-    Category getOne(Long id);
 }

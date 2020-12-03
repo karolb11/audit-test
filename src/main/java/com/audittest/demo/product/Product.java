@@ -13,13 +13,10 @@ import java.util.Date;
 
 @Entity
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Product  extends Audit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long Id;
+    Long id;
 
     @Column(nullable = false,
             unique = true)

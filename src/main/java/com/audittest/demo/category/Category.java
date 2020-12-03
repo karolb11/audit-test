@@ -12,12 +12,10 @@ import java.util.Set;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Category extends Audit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long Id;
+    Long id;
 
     @Column(nullable = false,
             unique = true)
